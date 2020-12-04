@@ -1,9 +1,3 @@
-# <h1>Table of Contents<span class="tocSkip"></span></h1>
-# <div class="toc"><ul class="toc-item"></ul></div>
-
-# <h1>Table of Contents<span class="tocSkip"></span></h1>
-# <div class="toc"><ul class="toc-item"></ul></div>
-
 import xarray as xr
 import sys
 import random
@@ -13,6 +7,7 @@ import glob
 random.seed(0)
 
 def g_kde(y, x):
+    #print(y.shape,x.shape)
     kde = stats.gaussian_kde(y)
     return kde(x)
 
@@ -33,18 +28,13 @@ else:
 line_width = 5
 lev_sys_fo = ''
 
-if var in ['sink','lwatend']:
-    factor = 24*3600
-else:
-    factor = 1
 
-
-root_path = '/mnt/4data/CMAM/0A.daily/'
-if var in ['sink', 'TEM-res3-new', 'TEM-res2-new','lwatend']:
+root_path = '/mnt/10T.data4/data/CMAM/0A.daily/'
+if var in ['sink', 'lwatend']:
     infiles = f'{root_path}{var}_197901-201012.zarr'
     ds = xr.open_zarr(infiles)
 else:
-    infiles = glob.glob(f'{root_path}{var}/{var}_6hr*_CMAM_CMAM30-SD_r1i1p1_????0101??-*.nc')
+    infiles = glob.glob(f'{root_path}{var}/{var}_6hr*_CMAM_CMAM30-SD_r1i1p1_*010100-*123118.nc')
     print(len(infiles))
     ds = xr.open_mfdataset(infiles, concat_dim='time', parallel=True)#, engine = 'h5netcdf')
 clim = xr.open_dataset(f'{root_path}{var}/{lev_sys_fo}/{var}_climatology_woSSW.nc')
@@ -54,7 +44,7 @@ if what == 'percentages':
 elif what == 'absolute':
     ts_sel_anom = ds[var]
 elif what == 'anomalies':
-    ts_sel_anom = (ds[var].groupby('time.month') - clim[var])*factor
+    ts_sel_anom = ds[var].groupby('time.month') - clim[var]
 print('input data opened')
 
 for comp_name,size in zip(comp_name_ls, size_dict[time_scale]):
@@ -63,11 +53,11 @@ for comp_name,size in zip(comp_name_ls, size_dict[time_scale]):
                        for n in range(its)], dim = 'its')
     print("".ljust(line_width)+'{} samples generated'.format(its))
     comp_file = f'{root_path}composites_woSSW{w_clim}/{var}_{what}_comp_{comp_name}_{time_scale}days.nc'
-    ds_comp = xr.open_dataarray(comp_file)*factor
+    ds_comp = xr.open_dataarray(comp_file)
     print("".ljust(line_width)+'{} opened'.format(comp_file))
-    da_kde = xr.apply_ufunc(g_kde, rnd_means, ds_comp,\
-                       input_core_dims=[['its'], []],\
-                       vectorize=True, dask='allowed')
+    da_kde = xr.apply_ufunc(g_kde, rnd_means, ds_comp, dask_gufunc_kwargs=dict(allow_rechunk=True),\
+                       input_core_dims=[['its'], []], output_core_dims=[[]], \
+                       vectorize=True, dask='allowed',  exclude_dims = set(["its"]), output_dtypes=[ds_comp.dtype])
     print("".ljust(line_width)+'p-values calculated')
                         
     outfile_name = f'{root_path}composites_woSSW{w_clim}/{var}_pvalues_from{its}_comp_{comp_name}_{time_scale}days.nc'
