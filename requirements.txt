@@ -20,7 +20,7 @@ scipy==1.2.1
 seaborn==0.9.0
 Shapely==1.6.4.post2
 watermark==2.0.2
-xarray==0.14.1
+xarray==0.16.2
 xclim==0.15.2
 zarr==2.3.2
 palettable==3.3.0
