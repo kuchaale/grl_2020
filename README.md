@@ -35,7 +35,7 @@ Notebooks for each individual figure as well as for two data tables are in the [
 |    Notebook                                                                              | 
 |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [GRL_OGWD_absolute_composite.ipynb](code/GRL_OGWD_absolute_composite.ipynb)                   |
-| [OGWD_correlationipynb](code/OGWD_correlation.ipynb)                   |
+| [OGWD_correlation.ipynb](code/OGWD_correlation.ipynb)                   |
 
 
 ### Required package installation
