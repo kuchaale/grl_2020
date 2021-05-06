@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4300028.svg)](https://doi.org/10.5281/zenodo.4300028)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4740482.svg)](https://doi.org/10.5281/zenodo.4740482)
 [![Python 3.7](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-369/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
