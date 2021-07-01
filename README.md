@@ -47,5 +47,5 @@ Notebooks for each individual figure as well as for two data tables are in the [
 
 ### References
 
-- Kuchar, A., Sacha, P., Eichinger, R., Jacobi, C., Pisoft, P., and Rieder, H. E.: On the intermittency of orographic gravity wave hotspots and its importance for middle atmosphere dynamics, Weather Clim. Dynam., 1, 481-495, [https://doi.org/10.5194/wcd-2020-21](https://doi.org/10.5194/wcd-1-481-2020), 2020.
-- Sacha, P., Kuchar, A., Eichinger, R., Pisoft, P., Jacobi, C., and Rieder, H. E.: Diverse dynamical response to orographic gravity wave drag hotspots — a zonal mean perspective, Geophysical Research Letters, [https://doi.org/10.1029/2021GL093305](https://doi.org/10.1029/2021GL093305), 2021.
+- Kuchar, A., Sacha, P., Eichinger, R., Jacobi, C., Pisoft, P., and Rieder, H. E.: On the intermittency of orographic gravity wave hotspots and its importance for middle atmosphere dynamics, *Weather Clim. Dynam.*, 1, 481-495, [https://doi.org/10.5194/wcd-2020-21](https://doi.org/10.5194/wcd-1-481-2020), 2020.
+- Sacha, P., Kuchar, A., Eichinger, R., Pisoft, P., Jacobi, C., and Rieder, H. E.: Diverse dynamical response to orographic gravity wave drag hotspots — a zonal mean perspective, *Geophysical Research Letters*, 48, e2021GL093305, [https://doi.org/10.1029/2021GL093305](https://doi.org/10.1029/2021GL093305), 2021.
